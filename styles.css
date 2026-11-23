@@ -1,0 +1,113 @@
+/* ===== Colours: change these to restyle the whole site ===== */
+:root{
+  --teal:#0b4f5c; --teal-2:#0f6674; --sand:#f5ead8; --white:#fff;
+  --coral:#ff6a45; --coral-d:#e8532f; --ink:#12313a;
+  --r:20px; --nav-h:68px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);line-height:1.6;background:var(--white);-webkit-text-size-adjust:100%}
+img{display:block;max-width:100%}
+a{color:inherit}
+ul{list-style:none;padding:0}
+h1,h2,h3,.logo{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.12;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.narrow{max-width:760px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:10px;top:10px;background:#fff;padding:10px;z-index:99}
+
+/* Buttons: 52px+ tall for easy tapping */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-coral{background:var(--coral);color:#fff}.btn-coral:hover{background:var(--coral-d)}
+.btn-teal{background:var(--teal);color:#fff;margin-top:20px}.btn-teal:hover{background:var(--teal-2)}
+.btn-ghost{border-color:#fff;color:#fff}.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* Navigation (menu works without JavaScript) */
+.nav{position:sticky;top:0;z-index:50;background:var(--teal);color:#fff;height:var(--nav-h)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:100%}
+.logo{font-weight:800;font-size:1.4rem;text-decoration:none}
+.menu-toggle{position:absolute;opacity:0;width:1px;height:1px}
+.burger{display:grid;gap:6px;padding:14px;cursor:pointer}
+.burger span{display:block;width:26px;height:3px;border-radius:3px;background:#fff}
+.menu-toggle:focus-visible+.burger{outline:3px solid var(--coral);border-radius:8px}
+.links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--teal);padding:8px 20px 24px;flex-direction:column;gap:4px}
+.menu-toggle:checked~.links{display:flex}
+.links a{padding:14px 4px;text-decoration:none;font-weight:500}
+.links .btn{margin-top:8px;padding:0 28px}
+@media(min-width:860px){
+  .burger{display:none}
+  .links{display:flex;position:static;flex-direction:row;align-items:center;gap:26px;padding:0;background:none}
+  .links a{padding:0}
+  .links .btn{margin:0;min-height:46px}
+}
+
+/* Hero: the one animated moment on the page */
+.hero{position:relative;min-height:calc(100svh - var(--nav-h));display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,79,92,.35),rgba(8,40,48,.85))}
+.hero-in{position:relative;padding:60px 0 56px;animation:rise .9s ease both}
+.loc{font-weight:700;color:#ffd9a8;margin-bottom:12px}
+.hero h1{font-size:clamp(2.6rem,9vw,5.2rem);font-weight:800;max-width:14ch}
+.sub{font-size:1.15rem;max-width:46ch;margin:18px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:22px;font-size:.95rem;opacity:.9}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* Sections */
+.section{padding:72px 0}
+.sand{background:var(--sand)}
+h2{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;color:var(--teal);margin-bottom:28px}
+.lead{margin:-14px 0 28px;font-size:1.1rem}
+.grid3{display:grid;gap:22px}
+@media(min-width:760px){.grid3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border-radius:var(--r);padding:28px;box-shadow:0 6px 24px rgba(11,79,92,.08);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(11,79,92,.14)}
+.card h3{font-size:1.35rem;color:var(--teal);margin-bottom:8px}
+
+/* Rooms */
+.room{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.room img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.room-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.meta{font-size:.95rem;color:#4a6a72}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags li{font-size:.85rem;background:var(--sand);padding:4px 12px;border-radius:999px}
+.price{font-family:"Bricolage Grotesque",sans-serif;font-size:1.6rem;font-weight:800;color:var(--coral-d);margin-top:auto}
+.price span{font-size:.95rem;font-weight:500;color:var(--ink)}
+
+/* Amenities */
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chips li{background:var(--teal);color:#fff;padding:14px 22px;border-radius:999px;font-weight:500}
+
+/* Gallery */
+.gallery{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+.gallery img{width:100%;height:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;transition:transform .3s}
+.gallery img:hover{transform:scale(1.03)}
+.gallery img:nth-child(1),.gallery img:nth-child(6){grid-column:span 2;aspect-ratio:2/1}
+@media(min-width:860px){.gallery{grid-template-columns:repeat(4,1fr)}}
+
+/* Location */
+.addr{margin-bottom:20px}
+.map{border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;min-height:280px;background:var(--sand)}
+.map iframe{width:100%;height:100%;border:0}
+
+/* FAQ */
+details{background:#fff;border-radius:16px;margin-bottom:12px;overflow:hidden}
+summary{cursor:pointer;padding:20px 24px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px;min-height:56px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--coral);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 24px 22px}
+
+/* Final CTA + footer */
+.cta{background:linear-gradient(135deg,var(--teal),var(--teal-2) 60%,#1b7f8a);color:#fff;text-align:center;padding:80px 0}
+.cta h2{color:#fff}
+.contact{margin-top:32px;display:grid;gap:8px}
+.foot{background:#08323b;color:#d6e6e8;padding:40px 0;font-size:.95rem}
+.foot-in{display:grid;gap:16px;text-align:center}
+.foot .logo{color:#fff}
+.foot ul{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px}
+.foot a{display:inline-block;padding:10px 4px}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
